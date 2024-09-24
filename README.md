@@ -208,6 +208,7 @@ dentro de Docker:
 3. Base de Datos (PostgreSQL): Contenedor con PostgreSQL en el puerto 5432.
    
 Resumen General
+
 ● MVC en Backend: Se mantiene la separación clara entre Modelos (TypeORM),
 Vistas (respuestas API), y Controladores (lógica de negocio).
 
