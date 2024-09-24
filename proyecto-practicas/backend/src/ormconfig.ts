@@ -1,16 +1,15 @@
-import { DataSource } from 'typeorm';
-import { User } from './entities/User';
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { Proyecto } from './entities/Proyecto';
+import { Staff } from './entities/Staff';
+import { Participan } from './entities/Participan';
 
-export const AppDataSource = new DataSource({
+export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'postgres',
-  host: 'db',
+  host: 'db',  
   port: 5432,
-  username: 'bdbeebit',         
-  password: 'esp93w5438',      
-  database: 'beebit',           
-  synchronize: true,
-  logging: true,
-  entities: [User],
-  migrations: [],
-  subscribers: [],
-});
+  username: 'bdbeebit',
+  password: 'esp93w5438',
+  database: 'beebit',
+  entities: [Proyecto, Staff, Participan],
+  synchronize: true,  
+};
