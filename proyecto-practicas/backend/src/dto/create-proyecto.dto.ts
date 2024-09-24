@@ -1,4 +1,5 @@
-// DTO para validar los datos de entrada para crear un proyecto
+
+
 export class CreateProyectoDto {
     nombre: string;
     descripcion: string;

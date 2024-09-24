@@ -2,6 +2,7 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { Proyecto } from './entities/Proyecto';
 import { Staff } from './entities/Staff';
 import { Participan } from './entities/Participan';
+import { DataSource } from 'typeorm';
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'postgres',
