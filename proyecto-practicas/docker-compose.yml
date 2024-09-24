@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      DATABASE_URL: postgres://bdbeebit:esp93w5438@db:5432/beebit
+    depends_on:
+      - db
+
+
+
+  db:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: bdbeebit          
+      POSTGRES_PASSWORD: esp93w5438      
+      POSTGRES_DB: beebit                
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
