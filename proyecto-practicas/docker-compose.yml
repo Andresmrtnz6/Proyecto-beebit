@@ -1,8 +1,7 @@
-version: '3.8'
+version: "3"
+
 
 services:
-
-
   frontend:
     build:
       context: ./frontend
@@ -11,10 +10,9 @@ services:
       - "3000:3000"
     volumes:
       - ./frontend:/app
-      - /app/node_modules
-
-      
-
+    depends_on:
+      - backend
+      - db
 
 
   backend:
@@ -25,20 +23,16 @@ services:
       - "3001:3001"
     volumes:
       - ./backend:/app
-      - /app/node_modules
-    environment:
-      DATABASE_URL: postgres://bdbeebit:esp93w5438@db:5432/beebit
     depends_on:
       - db
-
 
 
   db:
     image: postgres:13-alpine
     environment:
-      POSTGRES_USER: bdbeebit          
-      POSTGRES_PASSWORD: esp93w5438      
-      POSTGRES_DB: beebit                
+      POSTGRES_USER: bdbeebit
+      POSTGRES_PASSWORD: esp93w5438
+      POSTGRES_DB: beebit
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -46,5 +40,3 @@ services:
 
 volumes:
   postgres_data:
-
-

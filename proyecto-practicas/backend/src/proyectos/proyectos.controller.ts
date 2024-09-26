@@ -26,4 +26,6 @@ export class ProyectosController {
   deleteProyecto(@Param('id') id: string) {
     return this.proyectosService.delete(id);
   }
+
+
 }

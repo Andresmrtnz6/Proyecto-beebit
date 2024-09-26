@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Staff } from '../entities/Staff';
+import { CreateStaffDto } from 'src/dto/create-staff.dto';
 
 @Injectable()
 export class StaffService {
@@ -10,11 +11,11 @@ export class StaffService {
     private readonly staffRepository: Repository<Staff>,
   ) {}
 
-  // Crear un nuevo miembro del staff
-  async create(data: any): Promise<Staff> {
-    const nuevoStaff = this.staffRepository.create(data);
-    return await this.staffRepository.save(nuevoStaff);
+  async create(nuevoStaff: CreateStaffDto): Promise<Staff> {
+    const staffEntity = this.staffRepository.create(nuevoStaff);
+    return await this.staffRepository.save(staffEntity);
   }
+  
 
   // Obtener un miembro del staff por ID
   async findOne(id: string): Promise<Staff> {
@@ -33,6 +34,8 @@ export class StaffService {
   async delete(id: string): Promise<void> {
     await this.staffRepository.delete({ id_staff: +id });
   }
+
+
 }
 
 

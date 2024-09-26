@@ -23,4 +23,6 @@ export class Staff {
 
   @OneToMany(() => Participan, (participan) => participan.staff)
   participaciones: Participan[];
+
+  
 }

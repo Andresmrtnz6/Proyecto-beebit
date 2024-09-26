@@ -1,6 +1,7 @@
 import { Participan } from './Participan'; 
 import { Entity, PrimaryGeneratedColumn, Column ,  OneToMany } from 'typeorm';
 
+
 @Entity()
 export class Proyecto {
   @PrimaryGeneratedColumn()
@@ -20,4 +21,8 @@ export class Proyecto {
 
   @Column('float')
   presupuesto: number;
+
+  @OneToMany(() => Participan, (participan) => participan.proyecto)
+  participaciones: Participan[];
 }
+
