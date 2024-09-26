@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from 'typeorm';
-import { Proyecto } from './Proyecto';  
-import { Staff } from './Staff';  
+import { Proyecto } from './Proyecto';
+import { Staff } from './Staff';
 
 @Entity()
 export class Participan {

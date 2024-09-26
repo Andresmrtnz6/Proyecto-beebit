@@ -9,14 +9,17 @@ async function bootstrap() {
 
   // Configuración de Swagger
   const config = new DocumentBuilder()
-    .setTitle('Gestor de Proyectos')
-    .setDescription('Documentación de la API')
+    .setTitle('API de gestión de proyectos')
+    .setDescription(
+      'Documentación de la API para la gestión de proyectos, staff y participación',
+    )
     .setVersion('1.0')
+    .addTag('proyectos')
     .build();
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3001);
+  await app.listen(3000);
 }
-
 bootstrap();

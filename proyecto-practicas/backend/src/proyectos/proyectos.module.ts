@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
-import { ParticipanController } from '../participan/participan.controller';  
-import { ParticipanService } from '../participan/participan.service';  
+import { ParticipanController } from '../participan/participan.controller';
+import { ParticipanService } from '../participan/participan.service';
 import { ProyectosController } from './proyectos.controller';
 import { ProyectosService } from './proyectos.service';
 import { Proyecto } from '../entities/Proyecto';
-import { TypeOrmModule } from '@nestjs/typeorm'; 
-
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Proyecto])],

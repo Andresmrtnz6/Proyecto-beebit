@@ -15,7 +15,6 @@ export class StaffService {
     const staffEntity = this.staffRepository.create(nuevoStaff);
     return await this.staffRepository.save(staffEntity);
   }
-  
 
   // Obtener un miembro del staff por ID
   async findOne(id: string): Promise<Staff> {
@@ -34,8 +33,4 @@ export class StaffService {
   async delete(id: string): Promise<void> {
     await this.staffRepository.delete({ id_staff: +id });
   }
-
-
 }
-
-

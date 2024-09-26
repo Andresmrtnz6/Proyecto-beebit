@@ -11,7 +11,10 @@ export class ParticipanService {
   ) {}
 
   // Asignar un miembro del staff a un proyecto
-  async assignStaffToProject(proyectoId: string, staffId: string): Promise<Participan> {
+  async assignStaffToProject(
+    proyectoId: string,
+    staffId: string,
+  ): Promise<Participan> {
     const nuevaParticipacion = this.participanRepository.create({
       proyecto: { id_proyecto: +proyectoId },
       staff: { id_staff: +staffId },
@@ -21,7 +24,10 @@ export class ParticipanService {
   }
 
   // Desasignar un miembro del staff de un proyecto
-  async removeStaffFromProject(proyectoId: string, staffId: string): Promise<void> {
+  async removeStaffFromProject(
+    proyectoId: string,
+    staffId: string,
+  ): Promise<void> {
     await this.participanRepository.delete({
       proyecto: { id_proyecto: +proyectoId },
       staff: { id_staff: +staffId },

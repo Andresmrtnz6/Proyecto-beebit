@@ -10,4 +10,3 @@ import { Participan } from '../entities/Participan';
   providers: [ParticipanService],
 })
 export class ParticipanModule {}
-

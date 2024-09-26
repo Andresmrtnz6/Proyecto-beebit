@@ -1,8 +1,15 @@
-
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateParticipanDto {
-    id_proyecto: string;
-    id_staff: string;
-    fecha_participacion: Date;
-  }
-  
+  @ApiProperty({ description: 'ID del proyecto al que se asigna el staff' })
+  id_proyecto: string;
+
+  @ApiProperty({ description: 'ID del miembro del staff asignado' })
+  id_staff: string;
+
+  @ApiProperty({
+    description: 'Fecha de participación en el proyecto',
+    example: '2023-01-01',
+  })
+  fecha_participacion: Date;
+}

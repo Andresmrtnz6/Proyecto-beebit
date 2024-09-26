@@ -1,6 +1,5 @@
-import { Participan } from './Participan'; 
-import { Entity, PrimaryGeneratedColumn, Column ,  OneToMany } from 'typeorm';
-
+import { Participan } from './Participan';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
 @Entity()
 export class Proyecto {
@@ -25,4 +24,3 @@ export class Proyecto {
   @OneToMany(() => Participan, (participan) => participan.proyecto)
   participaciones: Participan[];
 }
-

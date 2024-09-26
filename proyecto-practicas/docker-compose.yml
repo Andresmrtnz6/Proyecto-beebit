@@ -1,7 +1,7 @@
-version: "3"
-
+#version: "3"
 
 services:
+
   frontend:
     build:
       context: ./frontend
@@ -18,11 +18,12 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
     ports:
       - "3001:3001"
     volumes:
       - ./backend:/app
+    environment:
+      DATABASE_URL: postgres://bdbeebit:esp93w5438@db:5432/beebit
     depends_on:
       - db
 
