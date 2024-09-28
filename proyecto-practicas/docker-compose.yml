@@ -13,19 +13,26 @@ services:
     depends_on:
       - backend
       - db
+    environment:
+      BACKEND_API_URL: http://backend:4000/api 
+    networks:
+      - app-network
 
 
   backend:
     build:
       context: ./backend
+      dockerfile: Dockerfile
     ports:
-      - "3001:3001"
+      - "4000:4000"
     volumes:
       - ./backend:/app
-    environment:
-      DATABASE_URL: postgres://bdbeebit:esp93w5438@db:5432/beebit
     depends_on:
       - db
+    environment:
+      DATABASE_URL: postgres://bdbeebit:esp93w5438@db:5432/beebit
+    networks:
+      - app-network
 
 
   db:
@@ -38,6 +45,12 @@ services:
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
 
 volumes:
   postgres_data:

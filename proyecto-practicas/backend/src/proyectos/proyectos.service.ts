@@ -34,4 +34,10 @@ export class ProyectosService {
   async delete(id: string): Promise<void> {
     await this.proyectosRepository.delete({ id_proyecto: +id });
   }
+
+  async findAll(): Promise<Proyecto[]> {
+    return await this.proyectosRepository.find();
+  }
+
 }
+

@@ -18,15 +18,3 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
 };
 
 
-const config: DataSourceOptions = {
-  type: 'postgres',
-  host: 'localhost',
-  port: 5432,
-  username: 'bdbeebit',
-  password: 'esp93w5438',
-  database: 'beebit',
-  synchronize: true,
-  entities: [__dirname + '/**/*.entity{.ts,.js}'],
-};
-
-export default config;
