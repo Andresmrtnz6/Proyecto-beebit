@@ -5,11 +5,7 @@ const Header = () => {
     <header className="bg-blue-400 p-4 text-white shadow-md">
       <nav className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
-          <img
-            src="/favicon.ico"
-            alt="Beebit Logo"
-            className="h-8 w-8 mr-2"
-          />
+          
           <h1 className="text-3xl font-extrabold tracking-tight">
             Beebit Solutions
           </h1>

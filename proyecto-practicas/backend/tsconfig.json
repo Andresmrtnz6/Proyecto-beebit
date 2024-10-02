@@ -1,3 +1,4 @@
+
 {
   "compilerOptions": {
     "module": "commonjs",
@@ -8,7 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2021",
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "./dist",  // Especifica que la salida es la carpeta 'dist'
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
@@ -17,12 +18,8 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "strict": true,
-    "esModuleInterop": true,
-    
+    "types": ["node","jest"]  // Asegúrate de tener este campo para que reconozca process
   },
-
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.ts", "test/**/*.ts"],  // Incluye archivos de TypeScript dentro de la carpeta 'src'
+  "exclude": ["node_modules", "dist", "test"]  // Excluye las carpetas innecesarias
 }
-

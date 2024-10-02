@@ -1,46 +1,58 @@
 'use client';
-// frontend/src/app/proyectos/page.jsx
 
 import { useEffect, useState } from 'react';
+import { getProyectos } from '../../services/proyectosService'; 
 
-
-const Proyectos = () => {
+const ProyectosPage = () => {
   const [proyectos, setProyectos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchProyectos = async () => {
       try {
-        const response = await fetch('http://localhost:4000/proyectos'); // URL de la API del backend
-        const data = await response.json();
+        const data = await getProyectos();
         setProyectos(data);
-      } catch (error) {
-        console.error('Error al obtener los proyectos:', error);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
       }
     };
 
     fetchProyectos();
   }, []);
 
+  if (loading) {
+    return <p>Cargando proyectos...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
   return (
-    <div className="p-8">
-      <h2 className="text-4xl font-bold text-center mb-8">Proyectos</h2>
-      {proyectos.length > 0 ? (
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {proyectos.map((proyecto) => (
-            <li key={proyecto.id_proyecto} className="shadow-lg p-4 bg-gray-800">
-              <h3 className="text-lg font-bold">{proyecto.nombre}</h3>
-              <p>{proyecto.descripcion}</p>
-              <p>Presupuesto: {proyecto.presupuesto}</p>
-              <p>Fecha Inicio: {new Date(proyecto.fecha_inicio).toLocaleDateString()}</p>
-              <p>Fecha Fin: {new Date(proyecto.fecha_fin).toLocaleDateString()}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="text-center text-gray-500">No hay proyectos disponibles en este momento.</p>
-      )}
+    <div className="container mx-auto my-8">
+      <h1 className="text-3xl font-bold text-center mb-6">Proyectos</h1>
+      <ul className="space-y-4">
+        {proyectos.map((proyecto) => (
+          <li key={proyecto.id_proyecto} className="bg-white shadow-md rounded-lg p-4">
+            <h2 className="text-xl font-semibold">{proyecto.Nombre}</h2>
+            <p>{proyecto.Descripcion}</p>
+            <p>
+              Fecha de inicio: <span className="font-bold">{proyecto.Fecha_inicio}</span>
+            </p>
+            <p>
+              Fecha de fin: <span className="font-bold">{proyecto.Fecha_fin}</span>
+            </p>
+            <p>
+              Presupuesto: <span className="font-bold">${proyecto.Presupuesto}</span>
+            </p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
-export default Proyectos;
+export default ProyectosPage;

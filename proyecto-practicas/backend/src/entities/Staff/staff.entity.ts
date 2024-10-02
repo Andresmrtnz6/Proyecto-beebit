@@ -1,7 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Participan } from './Participan';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Participan } from '../Participan/participan.entity';
 
-@Entity()
+@Entity('staff')
 export class Staff {
   @PrimaryGeneratedColumn()
   id_staff: number;
@@ -21,6 +21,6 @@ export class Staff {
   @Column({ type: 'date' })
   fecha_nacimiento: Date;
 
-  @OneToMany(() => Participan, (participan) => participan.staff)
-  participaciones: Participan[];
+  @OneToMany(() => Participan, participan => participan.staff)
+  proyectos: Participan[];
 }

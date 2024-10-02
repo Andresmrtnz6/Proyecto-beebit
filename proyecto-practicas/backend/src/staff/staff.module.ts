@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { StaffController } from './staff.controller'; // Ruta correcta
-import { StaffService } from './staff.service'; // Ruta correcta
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Staff } from '../entities/Staff';
+import { StaffController } from './staff.controller';
+import { StaffService } from './staff.service';
+import { Staff } from '../entities/Staff/staff.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Staff])],

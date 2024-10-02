@@ -1,0 +1,12 @@
+{
+    "type": "postgres",
+    "host": "db",
+    "port": 5432,
+    "username": "beebit",
+    "password": "esp93w5438",
+    "database": "beebit",
+    "entities": ["dist/**/*.entity.js"],
+    "synchronize": true,
+    "logging": true
+  }
+  

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ParticipanService } from './paticipan.service';
 import { ParticipanController } from './participan.controller';
-import { ParticipanService } from './participan.service';
-import { Participan } from '../entities/Participan';
+import { Participan } from '../entities/Participan/participan.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Participan])],

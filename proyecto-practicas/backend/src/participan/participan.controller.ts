@@ -1,47 +1,55 @@
-import { Controller, Post, Delete, Param, Body } from '@nestjs/common';
-import { ParticipanService } from './participan.service';
+import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { ParticipanService } from './paticipan.service';
+import { CreateParticipanDto } from '../dto/participan/create-participan.dto';
+import { UpdateParticipanDto } from '../dto/participan/update-participan.dto';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Proyecto } from '../entities/Proyecto';
-import { Repository } from 'typeorm';
 
 @ApiTags('participan')
 @Controller('participan')
 export class ParticipanController {
   constructor(private readonly participanService: ParticipanService) {}
 
-  @Post('proyectos/:proyectoId/asignar-staff')
-  @ApiOperation({ summary: 'Asignar staff a un proyecto' })
-  @ApiResponse({ status: 201, description: 'Staff asignado al proyecto.' })
-  assignStaff(
-    @Param('proyectoId') proyectoId: string,
-    @Body('staffId') staffId: string,
-  ) {
-    return this.participanService.assignStaffToProject(proyectoId, staffId);
+  @Get()
+  async getParticipan() {
+    return this.participanService.findAll();
   }
 
-  @Delete('proyectos/:proyectoId/desasignar-staff')
-  @ApiOperation({ summary: 'Eliminar staff de un proyecto' })
-  @ApiResponse({ status: 200, description: 'Staff desasignado del proyecto.' })
-  unassignStaff(
-    @Param('proyectoId') proyectoId: string,
-    @Body('staffId') staffId: string,
-  ) {
-    return this.participanService.removeStaffFromProject(proyectoId, staffId);
+  @Get()
+  @ApiOperation({ summary: 'Obtener todas las relaciones entre proyectos y personal' })
+  @ApiResponse({ status: 200, description: 'Relaciones obtenidas con éxito.' })
+  findAll() {
+    return this.participanService.findAll();
   }
-  
-}
 
+  @Get(':id_proyecto/:id_staff')
+  @ApiOperation({ summary: 'Obtener una relación específica entre proyecto y staff' })
+  @ApiResponse({ status: 200, description: 'Relación obtenida con éxito.' })
+  findOne(@Param('id_proyecto') id_proyecto: string, @Param('id_staff') id_staff: string) {
+    return this.participanService.findOne(+id_proyecto, +id_staff);
+  }
 
-@Injectable()
-export class ProyectosService {
-  constructor(
-    @InjectRepository(Proyecto)
-    private readonly proyectoRepository: Repository<Proyecto>,
-  ) {}
+  @Post()
+  @ApiOperation({ summary: 'Asignar un staff a un proyecto' })
+  @ApiResponse({ status: 201, description: 'Relación creada con éxito.' })
+  create(@Body() createParticipanDto: CreateParticipanDto) {
+    return this.participanService.create(createParticipanDto);
+  }
 
-  async findAll(): Promise<Proyecto[]> {
-    return this.proyectoRepository.find();
+  @Put(':id_proyecto/:id_staff')
+  @ApiOperation({ summary: 'Actualizar la relación entre un proyecto y un staff' })
+  @ApiResponse({ status: 200, description: 'Relación actualizada con éxito.' })
+  update(
+    @Param('id_proyecto') id_proyecto: string,
+    @Param('id_staff') id_staff: string,
+    @Body() updateParticipanDto: UpdateParticipanDto,
+  ) {
+    return this.participanService.update(+id_proyecto, +id_staff, updateParticipanDto);
+  }
+
+  @Delete(':id_proyecto/:id_staff')
+  @ApiOperation({ summary: 'Eliminar la relación entre un proyecto y un staff' })
+  @ApiResponse({ status: 200, description: 'Relación eliminada con éxito.' })
+  delete(@Param('id_proyecto') id_proyecto: string, @Param('id_staff') id_staff: string) {
+    return this.participanService.delete(+id_proyecto, +id_staff);
   }
 }

@@ -1,4 +1,4 @@
-#version: "3"
+# version: '3'
 
 services:
 
@@ -6,43 +6,44 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    command: sh -c "npm run build && npm run start"
     ports:
       - "3000:3000"
     volumes:
       - ./frontend:/app
     depends_on:
-      - backend
       - db
+      - backend  
     environment:
-      BACKEND_API_URL: http://backend:4000/api 
+      BACKEND_API_URL: http://backend:4000/api
+      CHOKIDAR_USEPOLLING: 'true'
     networks:
       - app-network
-
 
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+      - DATABASE_USER=beebit
+      - DATABASE_PASSWORD=esp93w5438
+      - DATABASE_NAME=beebit
     ports:
-      - "4000:4000"
-    volumes:
-      - ./backend:/app
+      - "4000:4000" 
     depends_on:
       - db
-    environment:
-      DATABASE_URL: postgres://bdbeebit:esp93w5438@db:5432/beebit
     networks:
       - app-network
 
-
   db:
-    image: postgres:13-alpine
+    image: postgres
     environment:
-      POSTGRES_USER: bdbeebit
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: beebit
       POSTGRES_PASSWORD: esp93w5438
-      POSTGRES_DB: beebit
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      POSTGRES_NAME: beebit
     ports:
       - "5432:5432"
     networks:
@@ -51,6 +52,3 @@ services:
 networks:
   app-network:
     driver: bridge
-
-volumes:
-  postgres_data:

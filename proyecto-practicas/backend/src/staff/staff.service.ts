@@ -1,36 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Staff } from '../entities/Staff';
-import { CreateStaffDto } from 'src/dto/create-staff.dto';
+import { Staff } from '../entities/Staff/staff.entity';
+import { CreateStaffDto } from '../dto/staff/create-staff.dto';
+import { UpdateStaffDto } from '../dto/staff/update-staff.dto';
 
 @Injectable()
 export class StaffService {
   constructor(
     @InjectRepository(Staff)
-    private readonly staffRepository: Repository<Staff>,
+    private staffRepository: Repository<Staff>,
   ) {}
 
-  async create(nuevoStaff: CreateStaffDto): Promise<Staff> {
-    const staffEntity = this.staffRepository.create(nuevoStaff);
-    return await this.staffRepository.save(staffEntity);
+  findAll(): Promise<Staff[]> {
+    return this.staffRepository.find();
   }
 
-  // Obtener un miembro del staff por ID
-  async findOne(id: string): Promise<Staff> {
-    return await this.staffRepository.findOne({
-      where: { id_staff: +id }, // Convierte el id a número
-    });
+  findOne(id: number): Promise<Staff> {
+    return this.staffRepository.findOneBy({ id_staff: id });
   }
 
-  // Actualizar un miembro del staff
-  async update(id: string, data: any): Promise<Staff> {
-    await this.staffRepository.update({ id_staff: +id }, data);
-    return this.findOne(id);
+  create(createStaffDto: CreateStaffDto): Promise<Staff> {
+    const staff = this.staffRepository.create(createStaffDto);
+    return this.staffRepository.save(staff);
   }
 
-  // Eliminar un miembro del staff
-  async delete(id: string): Promise<void> {
-    await this.staffRepository.delete({ id_staff: +id });
+  async update(id: number, updateStaffDto: UpdateStaffDto): Promise<Staff> {
+    await this.staffRepository.update(id, updateStaffDto);
+    return this.staffRepository.findOneBy({ id_staff: id });
+  }
+
+  async delete(id: number): Promise<void> {
+    await this.staffRepository.delete(id);
   }
 }
