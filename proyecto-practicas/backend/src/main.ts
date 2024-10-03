@@ -14,7 +14,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Beebit API')
     .setDescription('Documentación de la API para el sistema de gestión de proyectos de Andrés')
-    .setVersion('0.1.2')
+    .setVersion('0.777')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);

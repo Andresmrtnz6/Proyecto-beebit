@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import EditProyectoForm from '../../components/proyectos/editarProyecto';
 import DeleteProyectoButton from '../../components/proyectos/eliminarProyecto';
 import { getProyectos, deleteProyecto } from '../../services/proyectoService';

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { deleteProyecto } from '../../services/proyectoService';
 
 const DeleteProyectoButton = ({ proyectoId, onDelete }) => {
   const [isDeleting, setIsDeleting] = useState(false);

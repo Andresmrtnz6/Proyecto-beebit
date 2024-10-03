@@ -5,7 +5,6 @@ const Footer = () => {
     <footer className="bg-blue-400 p-4 text-white">
       <div className="container mx-auto flex flex-col items-center text-center space-y-4">
 
-        {/* Redes sociales centradas */}
         <div className="flex space-x-4">
           <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
             <FaFacebookF className="text-white hover:text-gray-300" />
@@ -21,9 +20,7 @@ const Footer = () => {
           </a>
         </div>        
 
-        {/* Sección centralizada con el título y derechos reservados */}
         <div>
-          {/* Logo y nombre con colores del logo */}
           <h1 className="text-2xl font-bold">
             <span style={{ color: '#E3B400' }}>BEE</span>
             <span style={{ color: '#A4510F' }}>BIT</span> 
