@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import EditProyectoForm from '../../components/proyectos/editarProyecto';
 import DeleteProyectoButton from '../../components/proyectos/eliminarProyecto';
-import { getProyectos, deleteProyecto } from '../../services/proyectoService';
+import { getProyectos, deleteProyecto } from '../../services/proyectosService';
 
 
 

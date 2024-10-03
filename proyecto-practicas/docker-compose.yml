@@ -15,7 +15,7 @@ services:
       - db
       - backend  
     environment:
-      BACKEND_API_URL: http://backend:4000/api
+      BACKEND_API_URL: http://backend:4000
       CHOKIDAR_USEPOLLING: 'true'
     networks:
       - app-network
