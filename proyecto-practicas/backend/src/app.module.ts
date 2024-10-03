@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProyectosModule } from './Proyectos/proyectos.module';
-import { StaffModule } from './Staff/staff.module';
-import { ParticipanModule } from './Participan/participan.module';
+import { ProyectosModule } from './proyectos/proyectos.module';
+import { StaffModule } from './staff/staff.module';
+import { ParticipanModule } from './participan/participan.module';
 
 
 @Module({

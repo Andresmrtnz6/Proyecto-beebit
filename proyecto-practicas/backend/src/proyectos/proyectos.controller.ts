@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
 import { ProyectosService } from './proyectos.service';
 import { CreateProyectoDto } from '../dto/proyecto/create-proyecto.dto';
+import { UpdateProyectoDto } from '../dto/proyecto/update-proyecto.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 
 @ApiTags('proyectos')
@@ -71,4 +72,44 @@ export class ProyectosController {
   async createProyecto(@Body() createProyectoDto: CreateProyectoDto) {
     return this.proyectosService.create(createProyectoDto);
   }
+
+  @Put(':id')
+  @ApiOperation({ summary: 'Actualizar un proyecto existente' })
+  @ApiResponse({
+    status: 200,
+    description: 'Proyecto actualizado con éxito.',
+    schema: {
+      example: {
+        id: 1,
+        nombre: 'Proyecto A Modificado',
+        descripcion: 'Descripción actualizada del proyecto A',
+        fecha_inicio: '2024-01-01',
+        fecha_fin: '2024-12-31',
+        presupuesto: 55000
+      }
+    }
+  })
+  update(
+    @Param('id') id: string,
+    @Body() updateProyectoDto: UpdateProyectoDto,
+  ) {
+    return this.proyectosService.update(+id, updateProyectoDto);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Eliminar un proyecto existente' })
+  @ApiResponse({
+    status: 200,
+    description: 'Proyecto eliminado con éxito.',
+    schema: {
+      example: {
+        message: 'Proyecto eliminado con éxito.'
+      }
+    }
+  })
+  remove(@Param('id') id: string) {
+    return this.proyectosService.delete(+id);
+  }
+
+
 }

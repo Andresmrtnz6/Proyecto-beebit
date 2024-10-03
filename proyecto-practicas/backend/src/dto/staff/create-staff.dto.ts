@@ -1,5 +1,5 @@
 import { IsString, IsDate } from 'class-validator';
-import { ApiProperty } from '@nestjs/swagger'; // Añadido para Swagger
+import { ApiProperty } from '@nestjs/swagger'; 
 
 export class CreateStaffDto {
   @ApiProperty({ example: '12345678A', description: 'DNI del miembro del personal' })
