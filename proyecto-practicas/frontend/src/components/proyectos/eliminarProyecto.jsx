@@ -1,32 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const DeleteProyectoButton = ({ proyectoId, onDelete }) => {
-  const [isDeleting, setIsDeleting] = useState(false);
+const EliminarProyectoButton = ({ idProyecto }) => {
+    const handleDelete = () => {
+      fetch(`/api/proyectos/${idProyecto}`, {
+        method: 'DELETE',
+      }).then(() => {
+        window.location.reload();
+      });
+    };
 
-  const handleDelete = async () => {
-    if (window.confirm('¿Estás seguro de que deseas eliminar este proyecto?')) {
-      setIsDeleting(true);
-      try {
-        await deleteProyecto(proyectoId);
-        setIsDeleting(false);
-        onDelete();
-      } catch (error) {
-        console.error('Error al borrar el proyecto:', error);
-        setIsDeleting(false);
-      }
-    }
-  };
-
-  return (
-    <button
-      onClick={handleDelete}
-      className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-700"
-      disabled={isDeleting}
-    >
-      {isDeleting ? 'Borrando...' : 'Borrar'}
-    </button>
-  );
+    return (
+        <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-1 rounded-md shadow-md hover:bg-red-600 transition ease-in-out duration-200">
+            Borrar
+        </button>
+    );
 };
 
-export default DeleteProyectoButton;
-
+export default EliminarProyectoButton;

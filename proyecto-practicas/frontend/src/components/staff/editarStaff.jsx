@@ -1,11 +1,11 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-const EditarProyectoButton = ({ id }) => {
+const EditarStaffButton = ({ id }) => {
     const router = useRouter();
 
     const handleEdit = () => {
-        router.push(`/proyectos/edit/${id}`);
+        router.push(`/staff/edit/${id}`);
     };
 
     return (
@@ -15,4 +15,4 @@ const EditarProyectoButton = ({ id }) => {
     );
 };
 
-export default EditarProyectoButton;
+export default EditarStaffButton;

@@ -2,7 +2,7 @@
     "type": "postgres",
     "host": "db",
     "port": 5432,
-    "username": "beebit",
+    "username": "bdbeebit",
     "password": "esp93w5438",
     "database": "beebit",
     "entities": ["dist/**/*.entity.js"],

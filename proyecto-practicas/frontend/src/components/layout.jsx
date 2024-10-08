@@ -1,7 +1,6 @@
 import Header from './header';
 import Footer from './footer';
-import "../app/styles/globals.css";
-
+import '../app/styles/globals.css';
 
 const Layout = ({ children }) => {
   return (

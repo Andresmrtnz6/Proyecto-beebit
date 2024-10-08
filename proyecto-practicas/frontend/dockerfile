@@ -1,20 +1,17 @@
-# Usa una imagen base de Node.js
+# Usa una imagen base de Node.js para la fase de build
 FROM node:18-alpine AS builder
 
 # Define el directorio de trabajo
 WORKDIR /app
 
-# Copia los archivos necesarios
-COPY ./package*.json ./
+# Copia los archivos necesarios para instalar dependencias
+COPY package*.json ./
 
 # Instala las dependencias
 RUN npm install
 
-# Copia el resto del código
+# Copia todo el código fuente del frontend al contenedor
 COPY . .
-
-# Establece la variable de entorno para el frontend
-ENV NEXT_PUBLIC_BACKEND_API_URL=$BACKEND_API_URL
 
 # Compila el proyecto
 RUN npm run build
@@ -22,15 +19,17 @@ RUN npm run build
 # Usa una segunda etapa para la producción
 FROM node:18-alpine AS production
 
+# Define el directorio de trabajo para producción
 WORKDIR /app
 
-# Copia los archivos compilados desde el builder
-COPY --from=builder /app/.next /app/.next
-COPY --from=builder /app/node_modules /app/node_modules
-COPY --from=builder /app/package.json /app/package.json
+# Copia los archivos compilados y necesarios desde el builder
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
 
 # Exponer el puerto para la aplicación
 EXPOSE 3000
 
 # Comando para iniciar la aplicación
-CMD ["npm", "start"]
+CMD ["npm", "run", "start"]
+

@@ -6,8 +6,8 @@ import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger'; /
 
 
 
-@ApiTags('participan')
-@Controller('participan')
+@ApiTags('PARTICIPAN')
+@Controller('api/participan')
 export class ParticipanController {
   constructor(private readonly participanService: ParticipanService) {}
 

@@ -1,7 +1,5 @@
-
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import './styles/globals.css';
-
 
 export const metadata = {
   title: 'Beebit Solutions',

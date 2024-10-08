@@ -1,6 +1,7 @@
 'use client';
+
 import { useEffect, useState } from 'react';
-import { getParticipan } from '../..//services/participanService'; // Importa el servicio que acabas de crear
+import { getParticipan } from '../../services/participanService'; 
 
 const ParticipanPage = () => {
   const [participan, setParticipan] = useState([]);

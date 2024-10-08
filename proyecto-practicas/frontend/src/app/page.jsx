@@ -2,10 +2,11 @@ import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css'; 
 import Layout from '../components/layout';
-import { Button } from 'primereact/button';
+import Button from 'primereact/button';
 import Link from 'next/link';
-import ProyectosPage from './proyectos/page';
-import StaffPage from './staff/page';
+import React from 'react';
+import ProyectosPage from './proyectos/page'; 
+import StaffPage from './staff/page'; 
 
 
 
@@ -13,7 +14,6 @@ import StaffPage from './staff/page';
 
 const Home = () => {
   return (
-
 
     <Layout>
 
@@ -29,10 +29,8 @@ const Home = () => {
       </section>
 
 
-      {/* Sección de Proyectos destacados */}
       <ProyectosPage/>
 
-      {/* Sección de Nuestro Equipo */}
       <StaffPage/>
 
 

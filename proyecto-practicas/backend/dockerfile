@@ -24,7 +24,7 @@ WORKDIR /app
 # Copia los archivos compilados y las dependencias instaladas
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package*.json ./
+COPY package*.json ./
 
 # Exponer el puerto de la aplicación
 EXPOSE 4000

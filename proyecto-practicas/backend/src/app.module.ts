@@ -5,6 +5,7 @@ import { StaffModule } from './staff/staff.module';
 import { ParticipanModule } from './participan/participan.module';
 
 
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -20,6 +21,8 @@ import { ParticipanModule } from './participan/participan.module';
     ProyectosModule,
     StaffModule,
     ParticipanModule,
-  ],
+    ],
+    controllers: [],
+    providers: [],
 })
 export class AppModule {}

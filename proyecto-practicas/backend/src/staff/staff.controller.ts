@@ -4,8 +4,8 @@ import { CreateStaffDto } from '../dto/staff/create-staff.dto';
 import { UpdateStaffDto } from '../dto/staff/update-staff.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger'; // Añadido para Swagger
 
-@ApiTags('staff') // Agrupa la documentación bajo el tag 'staff' en Swagger
-@Controller('staff')
+@ApiTags('STAFF') 
+@Controller('api/staff')
 export class StaffController {
   constructor(private readonly staffService: StaffService) {}
 
