@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
 import { StaffService } from './staff.service';
-import { CreateStaffDto } from '../dto/staff/create-staff.dto';
-import { UpdateStaffDto } from '../dto/staff/update-staff.dto';
+import { CreateStaffDto } from '../../dto/staff/create-staff.dto';
+import { UpdateStaffDto } from '../../dto/staff/update-staff.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger'; // Añadido para Swagger
 
 @ApiTags('STAFF') 

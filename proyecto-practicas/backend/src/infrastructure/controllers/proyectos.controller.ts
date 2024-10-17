@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
-import { ProyectosService } from './proyectos.service';
+import { ProyectosService } from '../application/proyectos/proyectos.service';
 import { CreateProyectoDto } from '../dto/proyecto/create-proyecto.dto';
 import { UpdateProyectoDto } from '../dto/proyecto/update-proyecto.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';

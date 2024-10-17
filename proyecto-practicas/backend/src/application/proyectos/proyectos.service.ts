@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Proyecto } from '../entities/Proyectos/proyecto.entity';
-import { CreateProyectoDto } from '../dto/proyecto/create-proyecto.dto';
-import { UpdateProyectoDto } from '../dto/proyecto/update-proyecto.dto';
+import { Proyecto } from '../../entities/Proyectos/proyecto.entity';
+import { CreateProyectoDto } from '../../dto/proyecto/create-proyecto.dto';
+import { UpdateProyectoDto } from '../../dto/proyecto/update-proyecto.dto';
 
 @Injectable()
 export class ProyectosService {

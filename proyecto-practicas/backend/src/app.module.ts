@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProyectosModule } from './proyectos/proyectos.module';
-import { StaffModule } from './staff/staff.module';
+import { StaffModule } from './infrastructure/modules/staff.module';
 import { ParticipanModule } from './participan/participan.module';
 
 

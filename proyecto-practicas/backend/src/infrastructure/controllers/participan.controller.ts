@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
-import { ParticipanService } from './paticipan.service';
+import { ParticipanService } from '../application/participan/paticipan.service';
 import { CreateParticipanDto } from '../dto/participan/create-participan.dto';
 import { UpdateParticipanDto } from '../dto/participan/update-participan.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger'; // Añadidos para Swagger

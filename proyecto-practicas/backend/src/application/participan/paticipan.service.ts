@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Participan } from '../entities/Participan/participan.entity';
-import { CreateParticipanDto } from '../dto/participan/create-participan.dto';
-import { UpdateParticipanDto } from '../dto/participan/update-participan.dto';
+import { Participan } from '../../entities/Participan/participan.entity';
+import { CreateParticipanDto } from '../../dto/participan/create-participan.dto';
+import { UpdateParticipanDto } from '../../dto/participan/update-participan.dto';
 
 @Injectable()
 export class ParticipanService {
