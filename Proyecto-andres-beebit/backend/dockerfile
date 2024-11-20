@@ -1,0 +1,27 @@
+
+#Etapa de Inicio apra que empiece a desarrollar
+FROM node:18-alpine
+
+
+#Instala solamente las dependencias necesarias para desarrollo
+RUN apk add --no-cache make gcc g++ python3
+
+
+
+WORKDIR /usr/src/app
+
+
+
+#Instala las dependencias antes de copiar el código completo para aprovechar cache
+COPY package*.json ./
+RUN npm install
+
+
+#Hace que copie el codigo fuente
+COPY . .
+
+
+
+#Expone la app en el puerto 4000 y pone el modo desarrollo
+EXPOSE 4000
+CMD ["npm", "run", "start:dev"]

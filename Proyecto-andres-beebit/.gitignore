@@ -1,0 +1,3 @@
+
+#restringimos que aparezcan los datos de las credenciales en las variables de entorno en el repositorio de github por temas de seguridad
+.env

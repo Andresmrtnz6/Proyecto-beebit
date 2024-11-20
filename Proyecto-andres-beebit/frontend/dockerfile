@@ -1,0 +1,21 @@
+
+# 1. Imagen como base(define el sistema operativo y las herramientas básicas)
+#Etapa para que empiece a desarrollar 
+FROM node:18-alpine
+
+# 2. Establece el directorio de trabajo dentro del contenedor
+WORKDIR /usr/src/app
+
+
+#Instala las  dependencias antes de copiar el código completo para aprovechar caché
+COPY package*.json ./
+RUN npm install
+
+
+#hace que copie el codigo fuente
+COPY . .
+
+
+#Expone en el pueto 3000 y pone la app en modo de desarrollo
+EXPOSE 3000
+CMD ["npm", "run", "dev"]
