@@ -204,8 +204,9 @@ Cada servicio (backend, frontend, base de datos) se ejecutará en su propio cont
 dentro de Docker:
 
 1. Frontend (Next.js): Contenedor en el puerto 3000.
-2. Backend (Nest.js): Contenedor en el puerto 3001.
+2. Backend (Nest.js): Contenedor en el puerto 4000.
 3. Base de Datos (PostgreSQL): Contenedor con PostgreSQL en el puerto 5432.
+4. Directus (CMS) : Contenedor con directus en el puerto 8055.
    
 Resumen General
 
